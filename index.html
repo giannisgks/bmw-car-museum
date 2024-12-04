@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('adjust-lights-and-video', {
+            schema: {
+                lightSelectors: {type: 'string'},
+                videoSelector: {type: 'string'},
+                videoSrc: {type: 'string'}
+            },
+            init: function () {
+                const lightSelectors = this.data.lightSelectors.split(',').map(selector => selector.trim());
+                const lightEntities = lightSelectors.map(selector => document.querySelector(selector));
+                const videoEl = document.querySelector(this.data.videoSelector);
+    
+                // Handle mouseenter event
+                this.el.addEventListener('mouseenter', () => {
+                    // Turn on the lights
+                    lightEntities.forEach(light => {
+                        if (light) {
+                            light.setAttribute('intensity', '2');
+                        }
+                    });
+    
+                    // Play the video
+                    if (videoEl) {
+                        const video = videoEl.components.material.material.map.image;
+                        if (video && video.play) {
+                            video.setAttribute('src', this.data.videoSrc); // Change video source dynamically
+                            video.load(); // Ensure the new video is loaded
+                            video.play(); // Play the updated video
+                        }
+                    }
+                });
+    
+                // Handle mouseleave event
+                this.el.addEventListener('mouseleave', () => {
+                    // Dim the lights
+                    lightEntities.forEach(light => {
+                        if (light) {
+                            light.setAttribute('intensity', '0');
+                        }
+                    });
+    
+                    // Pause the video
+                    if (videoEl) {
+                        const video = videoEl.components.material.material.map.image;
+                        if (video && video.pause) {
+                            video.pause();
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <a-scene>
+        <a-sky color="black"></a-sky>
+
+        <!-- Garage -->
+        <a-entity 
+            gltf-model="/models/modern_garage.glb" 
+            position="0 0 0" 
+            scale="2 2 2">
+        </a-entity>
+
+        <a-entity 
+            gltf-model="/models/1936_bmw_328_roadster.glb" 
+            position="-6 0 -7" 
+            scale="0.012 0.012 0.012"
+            adjust-lights-and-video="lightSelectors: #light1;videoSelector: #videoScreen;videoSrc: /vids/1936bmw.mp4">
+        </a-entity>
+
+        <a-light 
+            id="light1"
+            type="spot" 
+            position="-6 5 -5.5" 
+            intensity="0" 
+            angle="30" 
+            color="white"
+            rotation="-75 0 0">
+        </a-light>
+
+        <a-entity 
+            gltf-model="/models/1986_bmw_e30_fl_lp.glb" 
+            position="-3 0 -7" 
+            scale="1.1 1.1 1.1" 
+            rotation="0 0 0" 
+            adjust-lights-and-video="lightSelectors: #light2; videoSelector: #videoScreen; videoSrc: /vids/1986bmw.mp4">
+        </a-entity> 
+
+        <a-light 
+            id="light2"
+            type="spot" 
+            position="-3 5 -5.5" 
+            intensity="0" 
+            angle="30" 
+            color="white"
+            rotation="-75 0 0">
+        </a-light>
+
+        <a-entity 
+            gltf-model="/models/1987_bmw_e34_lp.glb" 
+            position="0 0 -7" 
+            scale="1.1 1.1 1.1"
+            adjust-lights-and-video="lightSelectors: #light3;videoSelector: #videoScreen;videoSrc: /vids/1987bmw.mp4">
+        </a-entity>
+
+        <a-light 
+            id="light3"
+            type="spot" 
+            position="0 5 -5.5" 
+            intensity="0" 
+            angle="30" 
+            color="white"
+            rotation="-75 0 0">
+        </a-light>
+
+        <a-entity 
+            gltf-model="/models/1998_bmw_e46.glb" 
+            position="3 0 -7" 
+            scale="0.017 0.017 0.017"
+            rotation="0 -180 0"
+            adjust-lights-and-video="lightSelectors: #light4;videoSelector: #videoScreen;videoSrc: /vids/1998bmw.mp4">
+        </a-entity>
+
+        <a-light 
+            id="light4"
+            type="spot" 
+            position="3 5 -5.5" 
+            intensity="0" 
+            angle="30" 
+            color="white"
+            rotation="-75 0 0">
+        </a-light> 
+
+        <a-entity 
+            gltf-model="/models/2021_bmw_csl_hommage_r.glb" 
+            position="6 -0.12 -7.1" 
+            scale="1.2 1.2 1.1"
+            rotation="0 -60 0"
+            adjust-lights-and-video="lightSelectors: #light5;videoSelector: #videoScreen;videoSrc: /vids/2021bmw.mp4">
+        </a-entity>
+        <a-light 
+            id="light5"
+            type="spot" 
+            position="6 5 -5.5" 
+            intensity="0" 
+            angle="30" 
+            color="white"
+            rotation="-75 0 0">
+        </a-light>
+
+        <!-- Room Light -->
+        <a-light 
+            id="lightroom1"
+            type="spot" 
+            position="0 8 -6"
+            intensity="0.4" 
+            angle="30" 
+            color="white"
+            rotation="-90 0 0">
+        </a-light>
+        <a-light 
+            id="lightroom2"
+            type="spot" 
+            position="-6 8 -6"
+            intensity="0.4" 
+            angle="30" 
+            color="white"
+            rotation="-90 0 0">
+        </a-light>
+        <a-light 
+            id="lightroom3"
+            type="spot" 
+            position="6 8 -6"
+            intensity="0.4" 
+            angle="30" 
+            color="white"
+            rotation="-90 0 0">
+        </a-light>
+
+        <a-light 
+            id="lightroom4"
+            type="spot" 
+            position="0 8 -6"
+            intensity="0.2" 
+            angle="90" 
+            color="white"
+            rotation="0 0 0">
+        </a-light>
+
+        <a-light 
+            id="lightroom_corner_l"
+            type="spot" 
+            position="-8.5 16 -8.2"
+            intensity="3" 
+            angle="9" 
+            color="white"
+            rotation="-74.8 0 0">
+        </a-light>
+
+        <a-light 
+            id="lightroom_corner_r"
+            type="spot" 
+            position="8.5 16 -8.2"
+            intensity="3" 
+            angle="9" 
+            color="white"
+            rotation="-74.8 0 0">
+        </a-light>
+        <!-- Video Screen -->
+        <a-plane 
+            src="/pics/screen.png" 
+            position="0 4.5 -11.5" 
+            width="11" 
+            height="5.5" 
+            rotation="0 0 0">
+        </a-plane>
+
+        <a-plane 
+            src="/pics/poster1.jpg" 
+            position="-8.5 3.5 -11.5" 
+            width="5" 
+            height="7" 
+            rotation="0 0 0">
+        </a-plane>
+        <a-plane 
+            src="/pics/poster2.jpg" 
+            position="8.5 3.5 -11.5" 
+            width="5" 
+            height="7" 
+            rotation="0 0 0">
+        </a-plane>
+        <a-video 
+            id="videoScreen" 
+            src="#videoTexture" 
+            position="0 4.5 -11.4" 
+            width="10" 
+            height="4.5" 
+            rotation="0 0 0">
+        </a-video>
+        <a-plane 
+            src="/pics/1936bmw.jpg" 
+            position="-6 0.5 -3" 
+            width="2" 
+            height="1" 
+            rotation="-60 0 0">
+        </a-plane>
+
+        <a-plane 
+            src="/pics/1986bmw.jpg" 
+            position="-3 0.5 -3" 
+            width="2" 
+            height="1" 
+            rotation="-60 0 0">
+        </a-plane>
+
+        <a-plane 
+            src="/pics/1987bmw.jpg" 
+            position="0 0.5 -3" 
+            width="2" 
+            height="1" 
+            rotation="-60 0 0">
+        </a-plane>
+
+        <a-plane 
+            src="/pics/1998bmw.jpg" 
+            position="3 0.5 -3" 
+            width="2" 
+            height="1" 
+            rotation="-60 0 0">
+        </a-plane>
+
+        <a-plane 
+            src="/pics/2021bmw.jpg" 
+            position="6 0.5 -3" 
+            width="2" 
+            height="1" 
+            rotation="-60 0 0">
+        </a-plane>
+        <!-- Video Sources -->
+        <video id="videoTexture" src="/vids/1936bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
+        <video id="videoTexture" src="/vids/1986bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
+        <video id="videoTexture" src="/vids/1987bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
+        <video id="videoTexture" src="/vids/1998bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
+        <video id="videoTexture" src="/vids/2021bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
+        
+        <!-- Camera -->
+        <a-camera 
+            position="0 1.6 6" 
+            wasd-controls="acceleration: 20">
+            <a-cursor 
+                color="yellow"
+                fuse="true"
+                fuse-timeout="1500">
+            </a-cursor>
+        </a-camera>
+    </a-scene>
+</body>
+</html>
