@@ -63,16 +63,16 @@
 
         <!-- Garage -->
         <a-entity 
-            gltf-model="/models/modern_garage.glb" 
+            gltf-model="models/modern_garage.glb" 
             position="0 0 0" 
             scale="2 2 2">
         </a-entity>
 
         <a-entity 
-            gltf-model="/models/1936_bmw_328_roadster.glb" 
+            gltf-model="models/1936_bmw_328_roadster.glb" 
             position="-6 0 -7" 
             scale="0.012 0.012 0.012"
-            adjust-lights-and-video="lightSelectors: #light1;videoSelector: #videoScreen;videoSrc: /vids/1936bmw.mp4">
+            adjust-lights-and-video="lightSelectors: #light1;videoSelector: #videoScreen;videoSrc: vids/1936bmw.mp4">
         </a-entity>
 
         <a-light 
@@ -86,11 +86,11 @@
         </a-light>
 
         <a-entity 
-            gltf-model="/models/1986_bmw_e30_fl_lp.glb" 
+            gltf-model="models/1986_bmw_e30_fl_lp.glb" 
             position="-3 0 -7" 
             scale="1.1 1.1 1.1" 
             rotation="0 0 0" 
-            adjust-lights-and-video="lightSelectors: #light2; videoSelector: #videoScreen; videoSrc: /vids/1986bmw.mp4">
+            adjust-lights-and-video="lightSelectors: #light2; videoSelector: #videoScreen; videoSrc: vids/1986bmw.mp4">
         </a-entity> 
 
         <a-light 
@@ -104,10 +104,10 @@
         </a-light>
 
         <a-entity 
-            gltf-model="/models/1987_bmw_e34_lp.glb" 
+            gltf-model="models/1987_bmw_e34_lp.glb" 
             position="0 0 -7" 
             scale="1.1 1.1 1.1"
-            adjust-lights-and-video="lightSelectors: #light3;videoSelector: #videoScreen;videoSrc: /vids/1987bmw.mp4">
+            adjust-lights-and-video="lightSelectors: #light3;videoSelector: #videoScreen;videoSrc: vids/1987bmw.mp4">
         </a-entity>
 
         <a-light 
@@ -121,11 +121,11 @@
         </a-light>
 
         <a-entity 
-            gltf-model="/models/1998_bmw_e46.glb" 
+            gltf-model="models/1998_bmw_e46.glb" 
             position="3 0 -7" 
             scale="0.017 0.017 0.017"
             rotation="0 -180 0"
-            adjust-lights-and-video="lightSelectors: #light4;videoSelector: #videoScreen;videoSrc: /vids/1998bmw.mp4">
+            adjust-lights-and-video="lightSelectors: #light4;videoSelector: #videoScreen;videoSrc: vids/1998bmw.mp4">
         </a-entity>
 
         <a-light 
@@ -139,11 +139,11 @@
         </a-light> 
 
         <a-entity 
-            gltf-model="/models/2021_bmw_csl_hommage_r.glb" 
+            gltf-model="models/2021_bmw_csl_hommage_r.glb" 
             position="6 -0.12 -7.1" 
             scale="1.2 1.2 1.1"
             rotation="0 -60 0"
-            adjust-lights-and-video="lightSelectors: #light5;videoSelector: #videoScreen;videoSrc: /vids/2021bmw.mp4">
+            adjust-lights-and-video="lightSelectors: #light5;videoSelector: #videoScreen;videoSrc: vids/2021bmw.mp4">
         </a-entity>
         <a-light 
             id="light5"
@@ -215,7 +215,7 @@
         </a-light>
         <!-- Video Screen -->
         <a-plane 
-            src="/pics/screen.png" 
+            src="pics/screen.png" 
             position="0 4.5 -11.5" 
             width="11" 
             height="5.5" 
@@ -223,14 +223,14 @@
         </a-plane>
 
         <a-plane 
-            src="/pics/poster1.jpg" 
+            src="pics/poster1.jpg" 
             position="-8.5 3.5 -11.5" 
             width="5" 
             height="7" 
             rotation="0 0 0">
         </a-plane>
         <a-plane 
-            src="/pics/poster2.jpg" 
+            src="pics/poster2.jpg" 
             position="8.5 3.5 -11.5" 
             width="5" 
             height="7" 
@@ -245,7 +245,7 @@
             rotation="0 0 0">
         </a-video>
         <a-plane 
-            src="/pics/1936bmw.jpg" 
+            src="pics/1936bmw.jpg" 
             position="-6 0.5 -3" 
             width="2" 
             height="1" 
@@ -253,7 +253,7 @@
         </a-plane>
 
         <a-plane 
-            src="/pics/1986bmw.jpg" 
+            src="pics/1986bmw.jpg" 
             position="-3 0.5 -3" 
             width="2" 
             height="1" 
@@ -261,7 +261,7 @@
         </a-plane>
 
         <a-plane 
-            src="/pics/1987bmw.jpg" 
+            src="pics/1987bmw.jpg" 
             position="0 0.5 -3" 
             width="2" 
             height="1" 
@@ -269,7 +269,7 @@
         </a-plane>
 
         <a-plane 
-            src="/pics/1998bmw.jpg" 
+            src="pics/1998bmw.jpg" 
             position="3 0.5 -3" 
             width="2" 
             height="1" 
@@ -277,18 +277,18 @@
         </a-plane>
 
         <a-plane 
-            src="/pics/2021bmw.jpg" 
+            src="pics/2021bmw.jpg" 
             position="6 0.5 -3" 
             width="2" 
             height="1" 
             rotation="-60 0 0">
         </a-plane>
         <!-- Video Sources -->
-        <video id="videoTexture" src="/vids/1936bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
-        <video id="videoTexture" src="/vids/1986bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
-        <video id="videoTexture" src="/vids/1987bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
-        <video id="videoTexture" src="/vids/1998bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
-        <video id="videoTexture" src="/vids/2021bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
+        <video id="videoTexture" src="vids/1936bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
+        <video id="videoTexture" src="vids/1986bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
+        <video id="videoTexture" src="vids/1987bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
+        <video id="videoTexture" src="vids/1998bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
+        <video id="videoTexture" src="vids/2021bmw.mp4" loop="false" crossorigin="anonymous" style="display: none;"></video>
         
         <!-- Camera -->
         <a-camera 
